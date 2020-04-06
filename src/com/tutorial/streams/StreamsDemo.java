@@ -2,6 +2,7 @@ package com.tutorial.streams;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -97,5 +98,25 @@ public class StreamsDemo {
 
         var infiniteStream2 = Stream.iterate(1, n->n+2);
         infiniteStream2.limit(3).forEach(n-> System.out.println(n));
+    }
+
+    public static void SortingStreams(){
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("c", 20)
+        );
+        //var sortedMovies  = movies.stream().sorted((a, b) -> a.getName().compareTo(b.getName()));
+        movies.stream().sorted((a, b) -> a.getName().compareTo(b.getName()))
+                .forEach(m -> System.out.println(m.getName()));
+
+        //another way
+        movies.stream().sorted(Comparator.comparing(m ->m.getName()))
+                .forEach(m -> System.out.println(m.getName()));
+
+        //easier way : desc
+        movies.stream().sorted(Comparator.comparing(Movie::getName).reversed())
+                .forEach(m -> System.out.println(m.getName()));
+
     }
 }
