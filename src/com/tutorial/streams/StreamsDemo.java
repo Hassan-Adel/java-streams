@@ -50,6 +50,38 @@ public class StreamsDemo {
                 .forEach(l -> System.out.println(l));
     }
 
+    public static void SlicingStreams(){
+        List<Movie> movies = List.of(
+                new Movie("a", 10),
+                new Movie("b", 30),
+                new Movie("c", 20)
+        );
+        //limit
+        movies.stream()
+                .limit(2)
+                .forEach(m  -> System.out.println(m.getName()));
+
+        //skip
+        //1000 movies
+        // 10 movies per page
+        //3rd page = skip(20)
+        //limit(10)
+        //pagination( skip((page - 1) x pageSize))
+        movies.stream()
+                .skip(2)
+                .forEach(m  -> System.out.println(m.getName()));
+
+        //takeWhile : returns the moment the predicate returns false (will only return movies a)
+        movies.stream()
+                .takeWhile(m -> m.getLikes()<30)
+                .forEach(m  -> System.out.println(m.getName()));
+
+        //dropWhile (will return movie a & b)
+        movies.stream()
+                .dropWhile(m -> m.getLikes()<30)
+                .forEach(m  -> System.out.println(m.getName()));
+    }
+
     public static void CreateStreams(){
         Collection<Integer> test = List.of(1,23,63,7,4,2);
         var stream = test.stream();

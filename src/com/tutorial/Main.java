@@ -18,5 +18,6 @@ public class Main {
         StreamsDemo.CreateStreams();
         StreamsDemo.MapElements();
         StreamsDemo.FilteringStreams();
+        StreamsDemo.SlicingStreams();
     }
 }
