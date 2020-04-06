@@ -3,6 +3,7 @@ package com.tutorial.streams;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
@@ -32,6 +33,21 @@ public class StreamsDemo {
         //Stream<List<x>> -> Stream<x>
         streamOfLists.flatMap(list -> list.stream())
                 .forEach(n -> System.out.println(n));
+    }
+
+    public static void FilteringStreams(){
+        List<Movie> movies = List.of(
+                new Movie("a", 10),
+                new Movie("b", 15),
+                new Movie("c", 20)
+        );
+        Predicate<Movie> isPopular  = movie -> movie.getLikes()>10;
+        //1
+        movies.stream().filter(m -> m.getLikes()>10)
+                .forEach(l -> System.out.println(l));
+        //2
+        movies.stream().filter(isPopular)
+                .forEach(l -> System.out.println(l));
     }
 
     public static void CreateStreams(){

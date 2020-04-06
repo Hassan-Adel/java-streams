@@ -17,5 +17,6 @@ public class Main {
         StreamsDemo.show();
         StreamsDemo.CreateStreams();
         StreamsDemo.MapElements();
+        StreamsDemo.FilteringStreams();
     }
 }
