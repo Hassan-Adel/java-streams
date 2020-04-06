@@ -16,5 +16,6 @@ public class Main {
 	// write your code here
         StreamsDemo.show();
         StreamsDemo.CreateStreams();
+        StreamsDemo.MapElements();
     }
 }

@@ -16,6 +16,24 @@ public class StreamsDemo {
         var count = movies.stream().filter(i -> i.getLikes()>10).count();
         System.out.println(count);
     }
+
+    public static void MapElements(){
+        List<Movie> movies = List.of(
+                new Movie("a", 10),
+                new Movie("b", 15),
+                new Movie("c", 20)
+        );
+        var movieTitles = movies.stream().map(m ->m.getName());
+        movieTitles.forEach(mt -> System.out.println(mt));
+
+        //flat map
+        var streamOfLists= Stream.of(List.of(1,2,3), List.of(4,5,6));
+        //flatten to list of ints
+        //Stream<List<x>> -> Stream<x>
+        streamOfLists.flatMap(list -> list.stream())
+                .forEach(n -> System.out.println(n));
+    }
+
     public static void CreateStreams(){
         Collection<Integer> test = List.of(1,23,63,7,4,2);
         var stream = test.stream();

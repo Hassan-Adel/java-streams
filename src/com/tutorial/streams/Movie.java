@@ -1,6 +1,15 @@
 package com.tutorial.streams;
 
 public class Movie {
+    public Movie setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private String name;
     private int likes;
 
