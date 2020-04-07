@@ -119,4 +119,19 @@ public class StreamsDemo {
                 .forEach(m -> System.out.println(m.getName()));
 
     }
+
+    public static void GetUniqueValuesFromStream() {
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("a", 30),
+                new Movie("c", 20),
+                new Movie("c", 20),
+                new Movie("c", 20)
+        );
+        movies.stream()
+                .map(m -> m.getLikes())
+                .distinct() //unique
+                .forEach(like -> System.out.println(like));
+    }
 }

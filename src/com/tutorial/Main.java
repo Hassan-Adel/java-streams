@@ -20,5 +20,6 @@ public class Main {
         StreamsDemo.FilteringStreams();
         StreamsDemo.SlicingStreams();
         StreamsDemo.SortingStreams();
+        StreamsDemo.GetUniqueValuesFromStream();
     }
 }
