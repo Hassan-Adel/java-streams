@@ -22,5 +22,6 @@ public class Main {
         StreamsDemo.SortingStreams();
         StreamsDemo.GetUniqueValuesFromStream();
         StreamsDemo.PeekElementsInStream();
+        StreamsDemo.StreamReducers();
     }
 }

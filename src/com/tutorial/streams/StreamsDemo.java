@@ -152,4 +152,25 @@ public class StreamsDemo {
                 .peek(n -> System.out.println("mapped: " + n))
                 .forEach(n -> System.out.println(n));
     }
+
+    public static void StreamReducers() {
+
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("d", 30),
+                new Movie("c", 60),
+                new Movie("e", 20),
+                new Movie("f", 20)
+        );
+
+        var count = movies.stream().count();
+        boolean allMatch = movies.stream().allMatch(m -> m.getLikes()>20); //false
+        boolean anyMatch = movies.stream().anyMatch(m -> m.getLikes()> 20); //true
+        boolean noneMatch = movies.stream().noneMatch(m -> m.getLikes()> 20); //false
+        Movie movie = movies.stream().findFirst().get();
+        var findAny = movies.stream().findAny();
+        var movieWithMaxLikes = movies.stream().max(Comparator.comparing(Movie::getLikes)).get();
+        var movieWithMinLikes = movies.stream().min(Comparator.comparing(Movie::getLikes)).get();
+    }
 }
