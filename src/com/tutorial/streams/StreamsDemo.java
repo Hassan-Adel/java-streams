@@ -134,4 +134,22 @@ public class StreamsDemo {
                 .distinct() //unique
                 .forEach(like -> System.out.println(like));
     }
+
+
+    public static void PeekElementsInStream() {
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("d", 30),
+                new Movie("c", 20),
+                new Movie("e", 20),
+                new Movie("f", 20)
+        );
+        movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .peek(m -> System.out.println("filtered: " + m))
+                .map(movie -> movie.getName())
+                .peek(n -> System.out.println("mapped: " + n))
+                .forEach(n -> System.out.println(n));
+    }
 }

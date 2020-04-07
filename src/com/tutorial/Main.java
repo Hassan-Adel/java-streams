@@ -21,5 +21,6 @@ public class Main {
         StreamsDemo.SlicingStreams();
         StreamsDemo.SortingStreams();
         StreamsDemo.GetUniqueValuesFromStream();
+        StreamsDemo.PeekElementsInStream();
     }
 }
