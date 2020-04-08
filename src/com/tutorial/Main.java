@@ -23,5 +23,6 @@ public class Main {
         StreamsDemo.GetUniqueValuesFromStream();
         StreamsDemo.PeekElementsInStream();
         StreamsDemo.StreamReducers();
+        StreamsDemo.GeneralStreamReducers();
     }
 }

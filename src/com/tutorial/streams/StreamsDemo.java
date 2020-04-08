@@ -1,9 +1,6 @@
 package com.tutorial.streams;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -172,5 +169,37 @@ public class StreamsDemo {
         var findAny = movies.stream().findAny();
         var movieWithMaxLikes = movies.stream().max(Comparator.comparing(Movie::getLikes)).get();
         var movieWithMinLikes = movies.stream().min(Comparator.comparing(Movie::getLikes)).get();
+    }
+
+    public static void GeneralStreamReducers() {
+
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("c", 60)
+        );
+        //get likes sum (reduce)
+        //[10,30,60]
+        //[40, 60]
+        //[100]
+        Optional<Integer> sum = movies.stream()
+                .map(m -> m.getLikes())
+                .reduce((a,b)-> a+b);
+        //return 0 in case of null (avoid exception)
+        System.out.println(sum.orElse(0));
+
+        //same result using method reference
+        Optional<Integer> sumMethodReference = movies.stream()
+                .map(m -> m.getLikes())
+                .reduce(Integer::sum);
+        //return 0 in case of null (avoid exception)
+        System.out.println(sumMethodReference.orElse(0));
+
+
+        //can also avoid null exception by using the identity parameter
+        Integer intSum = movies.stream()
+                .map(m -> m.getLikes())
+                .reduce(0, Integer::sum);
+        System.out.println(intSum);
     }
 }
