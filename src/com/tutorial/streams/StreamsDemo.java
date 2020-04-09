@@ -217,5 +217,10 @@ public class StreamsDemo {
                 .map(m -> m.getLikes())
                 .collect(Collectors.toList());
 
+
+        var filteredMovies = movies.stream()
+                .filter(m -> m.getLikes()>50)
+                .collect(Collectors.toSet());
+
     }
 }
