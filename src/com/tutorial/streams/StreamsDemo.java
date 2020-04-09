@@ -244,5 +244,14 @@ public class StreamsDemo {
                 .filter(m -> m.getLikes()>10 )
                 .collect(Collectors.summingInt(m -> m.getLikes()));
 
+        System.out.println(likesCollector);
+
+        //collect statistics on movie likes
+        var collectLikesStats = movies.stream()
+                .filter(m -> m.getLikes()>50 )
+                .collect(Collectors.summarizingInt(m -> m.getLikes()));
+
+        System.out.println(collectLikesStats);
+
     }
 }
