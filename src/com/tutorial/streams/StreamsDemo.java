@@ -237,5 +237,12 @@ public class StreamsDemo {
                 .filter(m->m.getLikes()> 50)
                 .collect(Collectors.toMap(m -> m.getName(), Function.identity()));
 
+        System.out.println(moviesMap);
+
+        //collect total likes (similar to reduce)
+        var likesCollector = movies.stream()
+                .filter(m -> m.getLikes()>10 )
+                .collect(Collectors.summingInt(m -> m.getLikes()));
+
     }
 }
