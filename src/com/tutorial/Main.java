@@ -24,5 +24,6 @@ public class Main {
         StreamsDemo.PeekElementsInStream();
         StreamsDemo.StreamReducers();
         StreamsDemo.GeneralStreamReducers();
+        StreamsDemo.Collectors();
     }
 }

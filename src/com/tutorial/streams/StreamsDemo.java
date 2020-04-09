@@ -1,7 +1,9 @@
 package com.tutorial.streams;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
@@ -201,5 +203,19 @@ public class StreamsDemo {
                 .map(m -> m.getLikes())
                 .reduce(0, Integer::sum);
         System.out.println(intSum);
+    }
+
+    public static void Collectors() {
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30),
+                new Movie("a", 70),
+                new Movie("c", 60)
+        );
+
+        var collectLikes = movies.stream()
+                .map(m -> m.getLikes())
+                .collect(Collectors.toList());
+
     }
 }
