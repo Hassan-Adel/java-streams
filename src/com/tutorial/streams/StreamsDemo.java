@@ -253,5 +253,13 @@ public class StreamsDemo {
 
         System.out.println(collectLikesStats);
 
+        //join movie titles with "," delimiter
+        var collectLikesDelimited = movies.stream()
+                .filter(m -> m.getLikes()>20)
+                .map(m -> m.getName())
+                .collect(Collectors.joining(","));
+
+        System.out.println(collectLikesDelimited);
+
     }
 }
