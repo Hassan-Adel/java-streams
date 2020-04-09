@@ -227,5 +227,10 @@ public class StreamsDemo {
                 .filter(m->m.getLikes()> 50)
                 .collect(Collectors.toMap(m -> m.getName(), m -> m.getLikes()));
 
+        //key(title) val(movie)
+        var moviesMap1 = movies.stream()
+                .filter(m->m.getLikes()> 50)
+                .collect(Collectors.toMap(m -> m.getName(), m -> m));
+
     }
 }
