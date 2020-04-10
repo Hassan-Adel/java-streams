@@ -302,4 +302,25 @@ public class StreamsDemo {
 
         System.out.println(groupedByGenreDelimited);
     }
+
+    public static void PartitioningElements() {
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30, Genre.COMEDY),
+                new Movie("a", 70,Genre.ACTION),
+                new Movie("c", 60, Genre.ROMANCE)
+        );
+
+        //partition movies with like > 30 and < 30
+        var partitionMovieLikes =  movies.stream()
+                .collect(Collectors.partitioningBy(movie -> movie.getLikes()>30));
+
+        System.out.println(partitionMovieLikes);
+
+        //can do same functions on the result set as the group by examples above
+        var partitionMovieLikesDelimited =  movies.stream()
+                .collect(Collectors.partitioningBy(movie -> movie.getLikes()>30, Collectors.mapping(Movie::getName, Collectors.joining(","))));
+
+        System.out.println(partitionMovieLikesDelimited);
+    }
 }

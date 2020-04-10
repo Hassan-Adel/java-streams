@@ -26,5 +26,6 @@ public class Main {
         StreamsDemo.GeneralStreamReducers();
         StreamsDemo.Collectors();
         StreamsDemo.GroupingElements();
+        StreamsDemo.PartitioningElements();
     }
 }
