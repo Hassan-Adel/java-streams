@@ -1,8 +1,11 @@
 package com.tutorial.streams;
 
+import com.tutorial.models.Genre;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -261,5 +264,42 @@ public class StreamsDemo {
 
         System.out.println(collectLikesDelimited);
 
+    }
+
+    public static void GroupingElements() {
+
+        List<Movie> movies = List.of(
+                new Movie("b", 10),
+                new Movie("a", 30, Genre.COMEDY),
+                new Movie("a", 70,Genre.ACTION),
+                new Movie("c", 60, Genre.ROMANCE)
+        );
+
+        //Map<Genre, List<Movie>>
+        var groupedByGenre = movies.stream()
+                .collect(Collectors.groupingBy(m -> m.getGenre()));
+
+        System.out.println(groupedByGenre);
+
+        //Map<Genre, Set<Movie>>
+        var groupedByGenreIntoSet = movies.stream()
+                .collect(Collectors.groupingBy(m -> m.getGenre(), Collectors.toSet()));
+
+        System.out.println(groupedByGenreIntoSet);
+
+        //Map<Genre, int> number of movies in a genre
+        var groupedByGenreCounting = movies.stream()
+                .collect(Collectors.groupingBy(m -> m.getGenre(), Collectors.counting()));
+
+        System.out.println(groupedByGenreCounting);
+
+        //Map<Genre, string> names of movies delimited by ","
+        var groupedByGenreDelimited = movies.stream()
+                .collect(Collectors.groupingBy(m -> m.getGenre(),Collectors.mapping(m-> m.getName(), Collectors.joining(","))));
+        //same
+        groupedByGenreDelimited = movies.stream()
+                .collect(Collectors.groupingBy(Movie::getGenre,Collectors.mapping(Movie::getName, Collectors.joining(","))));
+
+        System.out.println(groupedByGenreDelimited);
     }
 }

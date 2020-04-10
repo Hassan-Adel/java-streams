@@ -1,30 +1,42 @@
 package com.tutorial.streams;
 
+import com.tutorial.models.Genre;
+
 public class Movie {
+    public Movie(String name, int likes, Genre genre) {
+        this.name = name;
+        this.likes = likes;
+        this.genre = genre;
+    }
+
+    public Movie(String name, int likes) {
+        this.name = name;
+        this.likes = likes;
+    }
+
     public Movie setName(String name) {
         this.name = name;
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
     private String name;
     private int likes;
+
+    private Genre genre = Genre.ACTION;
 
     public int getLikes() {
         return likes;
     }
 
-    public Movie setLikes(int likes) {
-        this.likes = likes;
-        return this;
+    public String getName() {
+        return name;
+    }
+    public Genre getGenre() {
+        return genre;
     }
 
-
-    public Movie(String name, int likes) {
-        this.name = name;
-        this.likes = likes;
+    @Override
+    public String toString() {
+        return name;
     }
 }
